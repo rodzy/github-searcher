@@ -21,7 +21,6 @@ class InformationComponent extends React.Component {
           {(props) => {
             const {
               values,
-              touched,
               errors,
               isSubmitting,
               handleChange,
@@ -37,7 +36,7 @@ class InformationComponent extends React.Component {
                   value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className="App-input-search"                
+                  className="App-input-search"
                 />
 
                 {errors.name && errors.touched && (
@@ -57,16 +56,22 @@ class InformationComponent extends React.Component {
             );
           }}
         </Formik>
-          
-        <div className="output">{JSON.stringify(this.props.user, null, 2)}</div>
+        <div className="output">
+          <pre>
+            <code>{JSON.stringify(this.props.user, null, 2)}</code>
+          </pre>
+        </div>
       </div>
     );
   }
 }
 
+
+
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    name: state.name
   };
 };
 

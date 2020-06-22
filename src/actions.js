@@ -4,9 +4,10 @@ export const t = {
 };
 
 export const actions = {
-  loadUserData: (name) => ({
+  loadUserData: (name,id) => ({
     type: t.LOAD_USER_DATA,
     name,
+    id,
   }),
 
   loadUserDataSuccess: (data) => ({
