@@ -3,10 +3,28 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import App from "./App";
+import { userReducer } from "./reducer";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { Provider } from "react-redux";
+import { watchLoadUserData } from "../src/components/content";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  combineReducers({
+    user: userReducer,
+  }),
+  applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(watchLoadUserData);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

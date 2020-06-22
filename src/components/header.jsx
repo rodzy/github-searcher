@@ -1,7 +1,6 @@
 import React from 'react'
 import logo from "../GitHub-Mark-Light-120px-plus.png";
 import SearchBar from './searchbar';
-import Content from './content';
 
 const Header = () => {
     return ( 
@@ -14,7 +13,6 @@ const Header = () => {
               </span>
             </p>
             <SearchBar/>
-            <Content/>
         </header>
      );
 }
